@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>匿名聊天室</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="config.js"></script>
+<script src="chatroomws.js"></script>
+
+<style type="text/css">
+          
+          .block{
+              float:left;
+              border:2px;
+              border-radius: 2px;
+              height:12rem;
+              width:12rem;
+              margin-left: 5rem;
+              margin-top: 5rem;
+              border:1px solid black
+          }
+          .block_pic{
+          	height:60%;
+  			background-size: cover;
+          }
+          .block_msg{
+      
+          	padding-top:0.5rem;
+ 			text-align: center;
+          }
+         </style>
+</head>
+<script type="text/javascript">
+	var ip = getIp()
+	$(document).ready(function() {
+		var data = {};
+		$.ajax({
+            url : "http://"+ip+"/chat/ChatRoomPersonNum",
+            type:'POST',
+            data : data,
+            anysn:false,
+            success:function (res) {
+            	var result = JSON.parse(res)
+            	
+            	for(var p in result){//遍历json对象的每个key/value对,p为key
+            		$("#"+p+"_num").text(result[p])
+            		//alert(p + " " + result[p]);
+            	}
+            }, 
+            error:function (res) {
+            	alert("提交失败，请检查你的网络");
+           	}
+         
+        });
+	});
+	
+	 
+</script>
+<body>
+<div id='main'>
+<button id="createGroup" onclick="">创建群聊(未开放)</button>
+<div class="panel panel-success">
+	<div class="panel-heading">
+ 
+<a href="roomchat.html?寂寞聊聊"><h3 class="panel-title" id="寂寞聊聊">>>>>>寂寞聊聊>>>>><font color='red'>(在线: <span id='寂寞聊聊_num'></span>人)</font> </h3></a>
+	</div>
+	<div class="panel-body" id="content">
+		排解心中的那一股寂寞
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<a href="roomchat.html?单身男女"><h3 class="panel-title" id="单身男女">>>>>>单身男女>>>>><font color='red'>(在线: <span id='单身男女_num'></span>人)</font> </h3></a>
+	</div>
+	<div class="panel-body" id="content">
+		你单身吗？来一场单身派对吧！
+	</div>
+</div>
+ 
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<a href="roomchat.html?技术交流"><h3 class="panel-title" id="技术交流">>>>>>技术交流>>>>><font color='red'>(在线: <span id='技术交流_num'></span>人)</font> </h3></a>
+	</div>
+	<div class="panel-body" id="content">
+		我有酒，你有技术吗？
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<a href="roomchat.html?学习交流"><h3 class="panel-title" id="学习交流">>>>>>学习交流>>>>><font color='red'>(在线: <span id='学习交流_num'></span>人)</font> </h3></a>
+	</div>
+	<div class="panel-body" id="content">
+		好好学习，天天向上
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<a href="roomchat.html?游戏专区"><h3 class="panel-title" id="游戏专区">>>>>>游戏专区>>>>><font color='red'>(在线: <span id='游戏专区_num'></span>人)</font> </h3></a>
+	</div>
+	<div class="panel-body" id="content">
+		开黑吗？
+	</div>
+</div>
+</div>
+</body>
+</html>

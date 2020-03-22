@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="config.js"></script>
+<title>匿名社区</title>
+<style>
+   body{
+      height: 100%;
+      background-size: cover;
+ 
+  }
+</style>
+    <style>
+        .button1 {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            padding: 14px 28px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+            border-radius:5px;
+        }
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+<script type="text/javascript">
+	function submit(){ 	//提交
+		var ip = getIp()
+		var titlename = $("#titlename").val();
+		var content = $("#content").val()
+ 
+		if(titlename=="" || content==""){
+			alert("标题或内容不能为空")
+		}else{
+			var data = {};
+            data["titlename"] = titlename
+            data["content"] = content 
+            //alert("http://"+ip+"/chat/SendStory")
+            $.ajax({
+	            url : "http://"+ip+"/chat/SendStory",
+	            type:'POST',
+	            data : data,
+	            anysn:false,
+	            success:function (res) {
+	            	var result = JSON.parse(res)
+	           		alert("发布成功")
+	           		$("#titlename").val("")
+	           		$("#content").val("")
+					if(result["row"] == "1"){
+		               	 var temp = new Date().getTime();
+		                
+		               	 html = "<div class='panel panel-default'>" +
+		                     "<div class='panel-heading'> " +
+		                     "<h4 class='panel-title'> " +
+		                     "<a data-toggle='collapse' href='#"+temp+"'>"+ result["story"].title+"</a> " +
+		                     "</h4> " +
+		                     "<font size='2px' color='red'>"+result["story"].dateTime+"</font>"+
+		                     "</div> " +
+		                     "<div id='"+temp+"' class='panel-collapse collapse'> " +
+		                     "<div class='panel-body'>"+ result["story"].content +"</div> " +
+		                     "</div>" +
+		                     "</div>"
+		 		       
+		               $("#group").find("div").eq(0).before(html);
+	                  }else if(result["row"] == "0"){
+	                	  alert("提交失败，请检查你的网络"); 
+	                  } 
+	            },
+	            error:function (res) {
+	            	alert("提交失败，请检查你的网络");
+	           	}
+	         
+            });
+		}
+	}
+</script>
+<script type="text/javascript">
+	var ip = getIp()
+	var minDateTime = ""
+	$(document).ready(function() {
+		var data = {};
+        data["minDateTime"] = minDateTime
+       	storyList(data)
+		
+	});
+	function showMore(){
+		var data = {};
+        data["minDateTime"] = minDateTime
+       	storyList(data)
+	}
+	function storyList(data){
+        $.ajax({
+            url : "http://"+ip+"/chat/StoryList",
+            type:'POST',
+            data : data,
+            anysn:false,
+            success:function (res) {
+            	var result = JSON.parse(res)
+              	//alert(result.length)
+              	//alert(result)
+              	$('#group').children().last().remove();
+              	for(var i=0; i<result.length; i++){
+              		html = "<div class='panel panel-default'>" +
+                    "<div class='panel-heading'> " +
+                    "<h4 class='panel-title'> " +
+                    "<a data-toggle='collapse' href='#"+result[i].id+"'>"+ result[i].title+"</a> " +
+                    "</h4> " +
+                    "<font size='2px' color='red'>"+result[i].dateTime+"</font>"+
+                    "</div> " +
+                    "<div id='"+result[i].id+"' class='panel-collapse collapse'> " +
+                    "<div class='panel-body'>"+ result[i].content +"</div> " +
+                    "</div>" +
+                    "</div>"
+		          	$("#group").append(html)
+              	}
+              	
+            	if(result.length == 0){
+            		html = "<div style='border:1px solid ; margin-top:10px; text-align:center;'>到底了</div>"
+                	$("#group").append(html)
+            	}else{
+            		minDateTime = result[result.length - 1].dateTime
+            		html = "<a href='javascript:showMore();'><div style='border:1px solid; margin-top:10px; text-align:center;' >加载更多</div></a>"
+            		$("#group").append(html)
+            	}
+            },
+            error:function (res) {
+         	   alert("加载失败，请检查你的网络");
+        	}
+        });
+	}
+	 
+</script>
+</head>
+
+<body>
+ 
+<div style="margin:10px;">
+	<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">写下你的故事。。。</h3>
+    </div>
+
+  <div class="form-horizontal" role="form">
+
+	<div class="form-group">
+		<div class="col-xs-12">
+			<input type="text" class="form-control" id="titlename" 
+				   placeholder="请输入标题">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-12">
+			<textarea class="form-control" rows="7" maxlength="300" placeholder="请输入内容，最大字数300" id="content"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-10">
+			<button class="button1" onclick="submit()">发布</button>
+		</div>
+	</div>
+</div>
+    </div>
+</div> 
+
+<div class="panel-group" id="group">
+	
+	
+
+</div>
+</body>
+</html>

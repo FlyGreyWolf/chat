@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css" href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css" rel="stylesheet" />
+
+
+<title>Insert title here</title>
+ 
+ 
+<script type="text/javascript">
+$(document).ready(function(){
+    //do something
+	another_msg()
+})
+</script>
+  <style>
+   html{
+      height: 100%;
+   }
+   body{
+      height: 100%;
+   }
+</style>
+
+
+</head>
+ 
+<body id="body">
+
+<div id="chatbox" class="lite-chatbox" style="overflow:auto; height:90%; width: 100%;">
+ 
+    <div class="tips">
+        <span class="tips-success"  >系统消息：恭喜你找到属于你的有缘人，开始聊天吧！</span>
+    </div>
+    
+    <div class="tips">
+        <span id="a" class="tips-success" ></span>
+    </div>
+	 
+</div>
+   
+<div id="sendDiv" style=" width: 100%; bottom: 0px;position:absolute;">
+	<div style="text-align:center; float:left; margin-bottom: 8px;width: 80%"><input id="content" type="text" class="form-control" placeholder=""  ></div>
+	<div style="text-align:center; float:left; margin-bottom: 8px; width: 20%"><button type="button" class="btn btn-default" onclick="send()">发送</button></div>
+</div>
+</body>
+</html> 
+ 

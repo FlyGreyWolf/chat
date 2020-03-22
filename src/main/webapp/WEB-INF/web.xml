@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>chat</display-name>
+  <welcome-file-list>
+    <welcome-file>happychat.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ChatRoomPersonNum</display-name>
+    <servlet-name>ChatRoomPersonNum</servlet-name>
+    <servlet-class>com.xujian.servlet.ChatRoomPersonNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatRoomPersonNum</servlet-name>
+    <url-pattern>/ChatRoomPersonNum</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StoryList</display-name>
+    <servlet-name>StoryList</servlet-name>
+    <servlet-class>com.xujian.servlet.StoryList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StoryList</servlet-name>
+    <url-pattern>/StoryList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SendStory</display-name>
+    <servlet-name>SendStory</servlet-name>
+    <servlet-class>com.xujian.servlet.SendStory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendStory</servlet-name>
+    <url-pattern>/SendStory</url-pattern>
+  </servlet-mapping>
+</web-app>

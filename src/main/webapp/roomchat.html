@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>匿名聊天室</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="config.js"></script>
+<script src="chatroomws.js"></script>
+<link type="text/css" href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css" rel="stylesheet" />
+  <style>
+   html{
+      height: 100%;
+   }
+   body{
+      height: 100%;
+   }
+</style>
+<script type="text/javascript">
+	var ip = getIp()
+	$(document).ready(function() {
+
+    var s = location.search.substring(1);
+    var roomId = decodeURIComponent(s)
+ 
+    enterRoom(roomId)
+	    
+	});
+	
+	 
+</script>
+</head>
+<body>
+<div id="head">在线人数：<span id="onlineNum"></span></div>
+<div id="chatbox" class="lite-chatbox" style="overflow:auto; height:90%; width: 100%;">
+ 
+    <div class="tips">
+        <span class="tips-success">系统消息：欢迎加入【<font id="name"></font>】</span>
+    </div>
+</div>
+
+<div id="sendDiv" style=" width: 100%; bottom: 0px;position:absolute;">
+	<div style="text-align:center; float:left; margin-bottom: 1px;width: 80%"><input id="content" type="text" class="form-control" placeholder="" ></div>
+	<div style="text-align:center; float:left; margin-bottom: 1px; width: 20%"><button type="button" class="btn btn-default" onclick="send()">发送</button></div>
+</div>
+</body>
+</html>

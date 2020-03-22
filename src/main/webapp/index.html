@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ 
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Insert title here</title>
+ <script src="config.js"></script>
+<style type="text/css">
+	 body{
+	 width: 100%;
+     height: 100%;
+     margin: 0;
+     padding: 0;}
+       
+     .content{ 
+       margin-top: 10rem; /*水平居中*/
+       position: relative; /*脱离文档流*/
+       text-align: center;
+      }
+      
+      .font-style{
+      	
+      }
+      .start-wrapper {
+	    margin: 20px;
+	    height: 40px;
+	}
+
+	.start-wrapper > button {
+	    display: inline-block;
+	    background-color: transparent;
+	    cursor: pointer;
+	}
+	
+	.start-btn {
+	    padding: 5px 10px 5px 20px;
+	    color: #cafaea;
+	    border: 1px solid #cafaea;
+	    border-radius: 3px;
+	    font-size: 18px;
+	    font-weight: 700;
+	    letter-spacing: 10px;
+	    line-height: normal;
+	    text-decoration: none;
+	    text-align: center;
+	    text-transform: uppercase;
+	}
+	.round_icon{
+	  width: 50px;
+	  height: 50px;
+	  display: flex;
+	  border-radius: 50%;
+	  border:1px solid #000;
+	  align-items: center;
+	  justify-content: center;
+	  background-color:#fff;
+	  overflow: hidden;
+	  margin:10px;
+	  cursor:pointer;
+	} 
+ 
+	 /*  .chk_div label{background: url(./img/boy_icon.png) no-repeat; display: block; }
+     .chk_div input[type=checkbox]:checked+img{background: url(./img/girl_icon.png) class:round_icon} */
+</style>
+ 
+<script type="text/javascript">
+	function onSelect(selectSex) {
+		if(selectSex == 'boy'){
+			$("#boy").prop("checked",true);
+	        $("#girl").prop("checked",false);
+	        $('#boy_icon').css("background-color", "#ff7f00")
+	        $('#girl_icon').css("background-color", "#fff")
+		}else if(selectSex == 'girl'){
+			$("#girl").prop("checked",true);
+	        $("#boy").prop("checked",false);
+	        $('#boy_icon').css("background-color", "#fff")
+	        $('#girl_icon').css("background-color", "#ff7f00")
+		}
+	}
+</script>
+    <style>
+        .button1 {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            padding: 14px 28px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 2px solid #FF95CA;
+            border-radius:5px;
+            margin:20px;
+        }
+        .button1:hover {
+            background-color: #FF95CA;
+            color: white;
+        }
+    </style>
+    
+   <script type="text/javascript">
+   	 	var ip = getIp()
+    	function Community() {
+			//alert("进入社区")
+			window.location.href = 'http://'+ip+'/chat/community.html?v='+(new Date().getTime());
+
+		}
+   	 	
+   	 	function charRoom() {
+			//alert("进入匿名聊天室")
+			window.location.href = 'http://'+ip+'/chat/chatroom.html?v='+(new Date().getTime());
+
+		}
+   </script>
+</head>
+<body> 	 
+		 
+ <div>	<button class="button1" onclick="Community()">匿名社区</button> <button class="button1" onclick="charRoom()">匿名聊天室</button> </div>
+ 	 
+	<div id="main" class="content" style="margin-top:20px;" > 
+		<div><img src="./img/icon.png" style="width:80px;height:80px;margin:0 auto"></div><br>
+		<div style="color:#fff;"><font size='5px'>「遇见你，是一种美丽的缘分」</font></div><br><br><br>
+	 	<div style="color:#fff;"><font size='5px'>请选择你的性别</font></div><br>
+	 	
+	 	<div id='chk_div'>
+		<label>
+ 
+			<input type="radio" style="display:None" name="gender"  id="boy" value="男孩"   checked> 
+			<img id="boy_icon" class='round_icon' style="background-color:#ff7f00;" src="./img/boy_icon.png" onclick="onSelect('boy')"> 
+		</label>
+		<label  >
+			<input type="radio" style="display:None" name="gender"  id="girl" value="女孩"> 
+			<!-- <input type="radio" name="gender" id="girl"  value="女孩"> 女孩 -->
+			<img id="girl_icon" class='round_icon' src="./img/girl_icon.png" onclick="onSelect('girl')">
+		</label></div><br><br>
+		
+		
+		<div class="start-wrapper">
+            <button class="start-btn" onclick="startMatch()">开始匹配</button>
+        </div>
+ 
+        
+ 
+	</div>
+	
+	<div style="text-align:center">  
+	  <label><font size='4px'>礼貌聊天，文明交友</font></label> <br>   <br>  
+	 <label>(Made By ITNSL )</label><br><br>
+	   <label><img src="./img/qrcode.jpg" style="width:10rem;margin:0 auto"> </label>
+	   
+ 
+ 
+	  </div>
+ 
+  
+</body>
+</html>
