@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 匿名聊天交流社区
 
 ## 项目演示：  
@@ -13,3 +14,6 @@
 2.匿名社区  
 3.匿名群聊  
 4.创建匿名群聊（还未完成）
+=======
+# chat
+>>>>>>> branch 'master' of https://github.com/FlyGreyWolf/chat.git
