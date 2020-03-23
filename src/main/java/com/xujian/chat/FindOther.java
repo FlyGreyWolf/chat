@@ -26,11 +26,16 @@ public class FindOther {
 					try {
 						Thread.sleep(1000);
 						count ++;
-						//System.out.println(count);
+						if(count == 20) {
+							count = 0;
+						}
+						System.out.println(count);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
+						count = 0;
 						e.printStackTrace();
 					}
+					
 					while(e2.hasMoreElements()){
 						String key = e2.nextElement();   //遍历每一个key
 						
@@ -38,7 +43,7 @@ public class FindOther {
 						//synchronized (lock) {
 						if(ht.get(key).get(0).size() + ht.get(key).get(1).size() <= 1) { 
 							
-							if(ht.get(key).get(0).size() != 0  && count == 30) {
+							if(ht.get(key).get(0).size() != 0  && count >= 10) {
 								count = 0;
 								Match boy = ht.get(key).get(0).removeFirst();
 								Match robot = new Match();
