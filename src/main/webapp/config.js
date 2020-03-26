@@ -4,7 +4,7 @@
  
 //通用接口地址设置
  
-var ip = "itnsl.xyz:8080";
+var ip = "127.0.0.1:8080";
 function getIp(){
   return ip;
 }

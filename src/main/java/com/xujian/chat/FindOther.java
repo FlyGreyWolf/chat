@@ -29,7 +29,7 @@ public class FindOther {
 						if(count == 20) {
 							count = 0;
 						}
-						System.out.println(count);
+						//System.out.println(count);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						count = 0;
