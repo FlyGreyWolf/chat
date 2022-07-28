@@ -1,7 +1,7 @@
 # 匿名聊天交流社区
 
 ## 项目演示：  
-[http://itnsl.xyz:8080/chat/happychat.html](http://itnsl.xyz:8080/chat/happychat.html)
+[http://114.115.167.191:8080/chat/happychat.html](http://114.115.167.191:8080/chat/happychat.html)
 
 ## 所用技术  
 后端：Tomcat+Servlet+Websocket  
